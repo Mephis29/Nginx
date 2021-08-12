@@ -44,3 +44,5 @@
  # System Files
  .DS_Store
  Thumbs.db
+
+#/nginx-1.20.1

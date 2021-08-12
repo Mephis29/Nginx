@@ -8,7 +8,7 @@
     "lint:fix": "npm run lint -- --fix",
     "test": "ng test --noWatch",
     "test:coverage": "npm test -- --codeCoverage",
-    "test:watch": "ng test",
+    "test:watych": "ng test",
     "test:chrome": "npm test -- --karmaConfig=karma-chrome.conf.js",
     "test:chrome:watch": "ng test -- --karmaConfig=karma-chrome.conf.js",
     "build": "ng build",

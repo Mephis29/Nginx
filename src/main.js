@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/ping', (req, res) => {
-    res.send(JSON.stringify({'statusCode': 200, 'message': 'OK', 'time': `${resTime} ms`}))
+    res.send(JSON.stringify({'statusCode': 200, 'message': 'OK', 'time': `${resTime} ms`}));
     res.end();
 });
 
