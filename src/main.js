@@ -4,11 +4,11 @@ const fs = require('fs');
 const responseTime = require('response-time');
 const quotes = require("quotesy");
 const cors = require('cors');
-const { APP_PORT, NODE_ENV, ENV_CONFIGURATION } = require('./app/environment')
+const { APP_PORT, NODE_ENV, ENV_CONFIGURATION } = require('./app/environment');
 
 const app = express();
-const index = fs.readFileSync('./client/ngQuote/maintenance/index.html', 'utf8')
-const server = app.listen(APP_PORT)
+const index = fs.readFileSync('./client/ngQuote/maintenance/index.html', 'utf8');
+const server = app.listen(APP_PORT);
 
 let myQuotes;
 let resTime;
@@ -20,7 +20,7 @@ app.options('*', cors());
 app.use(express.json());
 app.use(responseTime((req, res, time) => {
     resTime = time;
-}))
+}));
 
 app.get('/', (req, res) => {
     res.writeHead(200, {'Content-Type': 'text/html'});
@@ -84,7 +84,7 @@ app.put('/api/quotes/:id', (req, res) => {
     });
 
     if(trigger) {
-        myQuotes.splice(indexChangeQuote, 1, changeQuote)
+        myQuotes.splice(indexChangeQuote, 1, changeQuote);
         res.send(myQuotes).end();
     } else {
         res.status(404).send(JSON.stringify('Error 404')).end();
@@ -104,7 +104,7 @@ app.delete('/api/quotes/:id', (req, res) => {
     });
 
     if(trigger) {
-        myQuotes.splice(indexChangeQuote, 1)
+        myQuotes.splice(indexChangeQuote, 1);
         res.send(myQuotes).end();
     } else {
         res.status(404).send(JSON.stringify('Error 404')).end();
@@ -129,5 +129,5 @@ process.on('SIGINT', () => {
         // console.log(process.env);
         console.log('HTTP server closed');
     })
-  })
+  });
 console.log(`Server Listening on Port ${APP_PORT}...`);
