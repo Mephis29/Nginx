@@ -9,7 +9,7 @@ fi
 function initial()
 {
   if [[ -f "../data/users.db" ]]; then
-    chooseCommand
+      chooseCommand
     else
       echo "Would you like to create users.db?"
       select answer in Yes No

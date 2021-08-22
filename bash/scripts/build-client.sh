@@ -1,3 +1,3 @@
 #! /bin/bash
 
-zip –r client-app.zip ../bash
+zip -q -r client-app.zip ../bash/
