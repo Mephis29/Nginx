@@ -77,7 +77,6 @@ function createBackup()
 
 function restoreBackup()
 {
-#  Как написать проверку условия проще?
   if [[ ! $(find ../data -type f -name "*.backup") ]]; then
       echo "No backup file found"
       return
@@ -112,7 +111,7 @@ function listData()
   echo -en '\n'
   readarray arr < ../data/users.db
   for ((i = 0 ; i < ${#arr[@]} ; i++)); do
-    echo "$i.${arr[i]}"
+    echo "$((i+1)).${arr[i]}"
   done
 }
 
@@ -125,4 +124,8 @@ function listDataInverse()
   done
 }
 
-initial
+if [[ $command = "" || $command = "help" ]]; then
+  chooseCommand
+else
+  initial
+fi
