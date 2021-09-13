@@ -5,6 +5,7 @@ const responseTime = require('response-time');
 const quotes = require("quotesy");
 const cors = require('cors');
 const { APP_PORT, NODE_ENV, ENV_CONFIGURATION } = require('./app/environment');
+const lambdaFunc = require('./app/notifications/lambda-handlers/index');
 
 const app = express();
 const index = fs.readFileSync('./client/ngQuote/maintenance/index.html', 'utf8');
@@ -34,6 +35,7 @@ app.get('/ping', (req, res) => {
 
 app.get('/api/quotes', (req, res) => {
     res.send(JSON.stringify(myQuotes));
+    lambdaFunc("sergei.krn@gmail.com", JSON.stringify(myQuotes));
     res.end();
 });
 
@@ -130,4 +132,5 @@ process.on('SIGINT', () => {
         console.log('HTTP server closed');
     })
   });
+
 console.log(`Server Listening on Port ${APP_PORT}...`);
