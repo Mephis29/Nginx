@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/Mephis29/Nginx/compare/v0.0.7...v0.0.8) (2021-09-14)
+
+
+### Features
+
+* add build-client.sh ([5547e05](https://github.com/Mephis29/Nginx/commit/5547e0505427948722ab1bd9fb4e074b44b9b6a2))
+
+
+### Bug Fixes
+
+* fix build-client.sh ([ef5e695](https://github.com/Mephis29/Nginx/commit/ef5e695d6e4ff9976214fa59d95ce4324bd52165))
+
 ### [0.0.7](https://github.com/Mephis29/Nginx/compare/v0.0.6...v0.0.7) (2021-08-15)
 
 ### [0.0.6](https://github.com/Mephis29/Nginx/compare/v0.0.5...v0.0.6) (2021-08-15)
