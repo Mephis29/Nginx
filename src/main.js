@@ -5,7 +5,7 @@ const responseTime = require('response-time');
 const quotes = require("quotesy");
 const cors = require('cors');
 const { APP_PORT, NODE_ENV, ENV_CONFIGURATION } = require('./app/environment');
-const lambdaFunc = require('./app/notifications/lambda-handlers/index');
+const { handler } = require('./app/notifications/lambda-handlers/index');
 
 const app = express();
 const index = fs.readFileSync('./client/ngQuote/maintenance/index.html', 'utf8');
@@ -14,7 +14,7 @@ const server = app.listen(APP_PORT);
 let myQuotes;
 let resTime;
 
-myQuotes = createMyQuotes(3);
+myQuotes = createMyQuotes(1);
 
 app.use(cors());
 app.options('*', cors());
@@ -35,17 +35,20 @@ app.get('/ping', (req, res) => {
 
 app.get('/api/quotes', (req, res) => {
     res.send(JSON.stringify(myQuotes));
-    lambdaFunc("sergei.krn@gmail.com", JSON.stringify(myQuotes));
     res.end();
 });
 
 app.get('/api/quotes/random', (req, res) => {
-    if (req.query.tag) {
-        res.send(JSON.stringify(quotes.random_by_tag(`${req.query.tag}`)));
-        res.end();
-    }
-    res.send(JSON.stringify(quotes.random()));
-    res.end();
+    // if (req.query.tag) {
+    //     res.send(JSON.stringify(quotes.random_by_tag(`${req.query.tag}`)));
+    //     res.end();
+    // }
+    // res.send(JSON.stringify(quotes.random()));
+    // res.end();
+
+  res.send(JSON.stringify(myQuotes[0]));
+  handler("sergei.krn@gmail.com", (myQuotes[0]));
+  res.end();
 });
 
 app.get('/api/quotes/:id', (req, res) => {
@@ -117,7 +120,7 @@ function createMyQuotes (length) {
     let arr = [];
     for (let i = 0; i < length; i++) {
         arr.push({
-            id: `${i}`,
+            // id: `${i}`,
             author: quotes.random().author,
             text: quotes.random().text
         });

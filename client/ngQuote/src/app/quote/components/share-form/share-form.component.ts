@@ -52,7 +52,6 @@ export class ShareFormComponent {
     if (!this.isShareFormValid) {
       return;
     }
-
     this.shareSubmit.emit({ [ this.selectedShareOption.type ]: this.shareFormControl.value });
   }
 

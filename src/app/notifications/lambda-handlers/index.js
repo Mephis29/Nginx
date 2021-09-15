@@ -1,4 +1,4 @@
-var aws = require("@aws-sdk/client-dynamodb");
+var aws = require("aws-sdk");
 var ses = new aws.SES({ region: "us-east-1" });
 
 exports.handler = async function (email, quote) {
@@ -8,7 +8,7 @@ exports.handler = async function (email, quote) {
     },
     Message: {
       Body: {
-        Text: { Data: quote },
+        Text: { Data: JSON.stringify(quote) },
       },
 
       Subject: { Data: "Quote" },
