@@ -7,5 +7,9 @@
     "nodemon": "^2.0.12",
     "quotesy": "^1.0.5",
     "response-time": "^2.3.2"
+  },
+  "devDependencies": {
+    "@aws-sdk/client-dynamodb": "^3.30.0",
+    "aws-sdk": "^2.987.0"
   }
 }
