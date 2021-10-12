@@ -1,3 +1,0 @@
-[submodule "ngQuote"]
-	path = client/ngQuote
-	url = https://github.com/boale/ngQuote.git
