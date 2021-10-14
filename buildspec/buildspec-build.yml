@@ -38,22 +38,22 @@ phases:
 #      - aws configure set preview.cloudfront true
 
       # Copy the maintenance page to S3 bucket:
-#      - aws s3 cp maintenance/index.html s3://${S3_BUCKET}/index.html
+      - aws s3 cp maintenance/index.html s3://${S3_BUCKET}/index.html
       # Invalidate CloudFront cache
 #      s- aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DIST_ID} --paths "/index.html"
 
       # Clear S3 bucket:
-#      - aws s3 rm s3://${S3_BUCKET} --recursive --exclude "index.html"
+      - aws s3 rm s3://${S3_BUCKET} --recursive --exclude "index.html"
 #      - aws s3 rm s3://${S3_BUCKET} --recursive
-#      - echo S3 bucket is cleared.
+      - echo S3 bucket is cleared.
 
       # Copy dist folder to S3 bucket:
-#      - aws s3 cp dist s3://${S3_BUCKET} --recursive
+      - aws s3 cp dist s3://${S3_BUCKET} --recursive
 
       # Create CloudFront invalidation (which actually clears cache):
 #      - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DIST_ID} --paths "/*"
 
-#      - echo Application deployment is successfully completed on `date`
+      - echo Application deployment is successfully completed on `date`
 
 artifacts:
   files:
