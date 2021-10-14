@@ -43,7 +43,8 @@ phases:
       # - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DIST_ID} --paths "/index.html"
 
       # Clear S3 bucket:
-      - aws s3 rm s3://${S3_BUCKET} --recursive --exclude "index.html"
+#      - aws s3 rm s3://${S3_BUCKET} --recursive --exclude "index.html"
+      - aws s3 rm s3://${S3_BUCKET} --recursive
       - echo S3 bucket is cleared.
 
       # Copy dist folder to S3 bucket:
