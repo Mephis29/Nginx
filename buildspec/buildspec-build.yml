@@ -28,7 +28,7 @@ phases:
     commands:
       # Build Angular application.
       - echo Build started on `date`
-      - npm run build -- --configuration=${BUILD_ENV}
+      - npm run build --configuration=${BUILD_ENV}
 
 
   post_build:
