@@ -13,7 +13,6 @@ phases:
 
     commands:
       # temporary fix of YARN cert issue
-      # temporary fix of YARN cert issue
       # TODO: clean it up...
       - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
       -
