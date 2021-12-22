@@ -8,7 +8,10 @@ env:
 phases:
   install:
     runtime-versions:
-      java: corretto8
+      nodejs: 12.x
+    commands:
+      - npm install -g typescript
+      - nmp install
   pre_build:
     commands:
       - apt-get update
@@ -21,7 +24,7 @@ phases:
       - export PATH=$PATH:/sonar-scanner-3.3.0.1492-linux/bin/
   build:
     commands:
-#      - mvn test
+      - mvn test
       - mvn sonar:sonar -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project -Dsonar.organization=$Organization
       - sleep 5
       - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project >result.json
