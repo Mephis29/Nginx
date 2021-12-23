@@ -19,5 +19,5 @@ phases:
       - sonar.host.url=$HOST
       - sonar.projectKey=$Project
       - sonar.organization=$Organization
-  build:
-    commands:
+#  build:
+#    commands:
