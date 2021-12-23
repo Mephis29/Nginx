@@ -13,7 +13,7 @@ phases:
     commands:
       - apt-get update
       - apt-get install -y jq
-      - apt-get install openjdk-8-jdk
+#      - apt-get install openjdk-8-jdk
 
 #      - npm install -g typescript
 #      - npm install
