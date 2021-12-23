@@ -11,10 +11,12 @@ phases:
       nodejs: 12.x
 #      java: openjdk8
     commands:
-      - apt-get update
-      - apt-get install -y jq
-      - npm install -g typescript
-      - npm install
+#      - apt-get update
+#      - apt-get install -y jq
+
+#      - npm install -g typescript
+#      - npm install
+
 #      - npm install sonarqube-scanner
   pre_build:
     commands:
@@ -28,6 +30,7 @@ phases:
   build:
     commands:
 #      - npm run build
+      - ls -l
 #      - sonar-scanner -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project -Dsonar.organization=$Organization
 #      - sleep 5
       - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project >result.json
