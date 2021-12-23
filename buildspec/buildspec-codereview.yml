@@ -9,6 +9,7 @@ phases:
   install:
     runtime-versions:
       nodejs: 12.x
+      java: openjdk8
     commands:
       - apt-get update
       - apt-get install -y jq
@@ -27,8 +28,8 @@ phases:
   build:
     commands:
 #      - npm run build
-      - sonar-scanner -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project -Dsonar.organization=$Organization
-      - sleep 5
+#      - sonar-scanner -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project -Dsonar.organization=$Organization
+#      - sleep 5
       - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project >result.json
       - cat result.json
       - if [ $(jq -r '.projectStatus.status' result.json) = ERROR ] ; then $CODEBUILD_BUILD_SUCCEEDING -eq 0 ;fi
