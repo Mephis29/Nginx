@@ -9,10 +9,11 @@ phases:
   install:
     runtime-versions:
       nodejs: 12.x
-#      java: openjdk8
+      java: openjdk8
     commands:
-#      - apt-get update
-#      - apt-get install -y jq
+      - apt-get update
+      - apt-get install -y jq
+      - apt-get install openjdk-8-jdk
 
 #      - npm install -g typescript
 #      - npm install
