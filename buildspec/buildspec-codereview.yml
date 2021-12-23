@@ -10,14 +10,25 @@ phases:
     runtime-versions:
       nodejs: 12.x
     commands:
+      - apt-get update
+      - apt-get install -y jq
       - npm install -g typescript
       - npm install
-      - npm install sonarqube-scanner
+#      - npm install sonarqube-scanner
   pre_build:
     commands:
-      - sonar.login=$LOGIN
-      - sonar.host.url=$HOST
-      - sonar.projectKey=$Project
-      - sonar.organization=$Organization
-#  build:
-#    commands:
+#      - sonar.login=$LOGIN
+#      - sonar.host.url=$HOST
+#      - sonar.projectKey=$Project
+#      - sonar.organization=$Organization
+      - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip
+      - unzip ./sonar-scanner-cli-3.3.0.1492-linux.zip
+      - export PATH=$PATH:/sonar-scanner-3.3.0.1492-linux/bin/
+  build:
+    commands:
+#      - npm run build
+      - sonar-scanner -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project -Dsonar.organization=$Organization
+      - sleep 5
+      - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project >result.json
+      - cat result.json
+      - if [ $(jq -r '.projectStatus.status' result.json) = ERROR ] ; then $CODEBUILD_BUILD_SUCCEEDING -eq 0 ;fi
