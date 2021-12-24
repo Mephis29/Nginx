@@ -9,7 +9,7 @@ phases:
   install:
     runtime-versions:
       nodejs: 12.x
-      java: corretto11
+      java: corretto17
     commands:
       - apt-get update
       - apt-get install -y jq
@@ -25,14 +25,14 @@ phases:
 #      - sonar.host.url=$HOST
 #      - sonar.projectKey=$Project
 #      - sonar.organization=$Organization
-      - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip
-      - unzip ./sonar-scanner-cli-3.3.0.1492-linux.zip
-      - export PATH=$PATH:/sonar-scanner-3.3.0.1492-linux/bin/
+      - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
+      - unzip ./sonar-scanner-cli-4.6.2.2472-linux.zip
+      - export PATH=$PATH:/sonar-scanner-4.6.2.2472-linux/bin/
   build:
     commands:
 #      - npm run build
 #      - ls -l
-      - sonar-scanner-3.3.0.1492-linux/bin/sonar-scanner -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project -Dsonar.organization=$Organization
+      - sonar-scanner-4.6.2.2472-linux/bin/sonar-scanner -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project -Dsonar.organization=$Organization
 #      - sleep 5
       - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project >result.json
       - cat result.json
