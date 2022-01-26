@@ -44,7 +44,7 @@ phases:
     commands:
       # Run code quality tools.
       - echo Running code quality checks...
-      # I want that you work
+
       - npm run lint
       - npm run test:coverage
 
